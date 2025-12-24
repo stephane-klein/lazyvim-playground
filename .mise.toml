@@ -1,0 +1,21 @@
+[tools]
+neovim="0.11.5"
+go="latest"
+jj="0.36.0"
+
+[env]
+GOPATH = "{{config_root}}/go"
+GOBIN = "{{config_root}}/go/bin"
+
+[tasks.clean]
+run = """
+unlink ~/.config/lazyvim-playground/
+rm -rf ~/.local/state/lazyvim-playground/
+rm -rf ~/.local/share/lazyvim-playground/
+rm -rf ~/.local/cache/lazyvim-playground/
+"""
+
+[tasks.lazy_sync]
+run = """
+./start_sandboxed-neovim.sh --headless "+Lazy! sync" +qa
+"""
