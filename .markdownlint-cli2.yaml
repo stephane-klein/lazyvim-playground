@@ -1,0 +1,21 @@
+config:
+  default: true
+  line_length: false
+
+  heading-increment: true
+  headings:
+    style: atx
+
+  commands-show-output: true
+  no-missing-space-atx: true
+  no-multiple-space-atx: true
+  blanks-around-headings:
+    lines_above: 1
+    lines_below: 1
+  heading-start-left: true
+  no-blanks-blockquote: true
+  no-empty-links: true
+  code-block-style: fenced
+  table-pipe-style: leading_and_trailing
+  blanks-around-tables: true
+  table-column-style: aligned

@@ -21,7 +21,11 @@ return {
       -- Script
       "shfmt",
       "bash-language-server",
-      "shellcheck"
+      "shellcheck",
+
+      -- markdown
+      "markdownlint-cli2",
+      "markdown-toc",
     }
   }
 }
