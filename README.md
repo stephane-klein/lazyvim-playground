@@ -9,7 +9,7 @@ Roadmap:
 - [ ] Configure my keymap preferences for navigation and window splitting
 - [ ] Setup OpenRouter in Avante.nvim
 - [ ] Add TreeSitter plugin to install
-- [ ] Add Mason package to install
+- [x] Add Mason package to install
 - ...
 
 Small detail: I use the [Bepo](https://en.wikipedia.org/wiki/B%C3%89PO) keyboard layout, so I don't use the standard HJKL keys to move.
