@@ -20,5 +20,16 @@ return {
         preset = "vertical",
       },
     },
+    zen = {
+      toggles = {
+        dim = false,
+      }
+    },
+    styles = {
+      zen = {
+        backdrop = { transparent = true, blend = 30 },
+        keys = { q = "close" },
+      }
+    }
   },
 }
