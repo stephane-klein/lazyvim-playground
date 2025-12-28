@@ -86,7 +86,19 @@ return {
             ["e"] = {
               "toggle_auto_expand_width",
               desc = "Toggle auto expand width",
-            }
+            },
+            ["<leader>/"] = {
+              function(state)
+                local node = state.tree:get_node()
+                local path = node:get_id()
+                -- Get the directory path
+                if node.type ~= "directory" then
+                  path = vim.fn.fnamemodify(path, ":h")
+                end
+                require("snacks").picker.grep({ cwd = path })
+              end,
+              desc = "Grep in directory",
+            },
           },
         },
       },
