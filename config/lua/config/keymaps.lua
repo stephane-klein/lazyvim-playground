@@ -57,3 +57,5 @@ vim.keymap.set("n", "<Leader><Leader>z", function() Snacks.zen.zoom() end, { des
 
 -- Disable macro recording (not useful for my daily workflow)
 vim.keymap.set('n', 'q', '<Nop>', { desc = 'Disable macro recording' })
+
+vim.keymap.set("n", "<leader>sj", function() require("snacks").picker.jumps() end, { desc = "Jump List" })
