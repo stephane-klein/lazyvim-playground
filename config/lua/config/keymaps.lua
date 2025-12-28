@@ -54,3 +54,6 @@ vim.keymap.set("n", "<Leader><Leader><Down>", "<Cmd>:sp<CR>", { desc = "Split on
 vim.keymap.set("n", "<Leader><Leader>c", "<C-W><C-C>", { desc = "Close window" })
 vim.keymap.set("n", "<Leader><Leader>z", function() Snacks.zen.zoom() end, { desc = "Zoom window" })
 -- }}}
+
+-- Disable macro recording (not useful for my daily workflow)
+vim.keymap.set('n', 'q', '<Nop>', { desc = 'Disable macro recording' })
