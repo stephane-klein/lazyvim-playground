@@ -9,6 +9,12 @@ return {
     -- explorer = {
     --   replace_netrw = true,
     -- },
+    animate = {
+      enabled = false
+    },
+    scroll = {
+      enabled = false
+    },
     picker = {
       layouts = {
         vertical = {
