@@ -26,6 +26,11 @@ return {
       -- markdown
       "markdownlint-cli2",
       "markdown-toc",
+
+      -- C
+      "clangd",
+      "clang-format",
+      "codelldb"
     }
   }
 }
