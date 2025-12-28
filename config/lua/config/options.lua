@@ -27,3 +27,20 @@ end
 vim.opt.undofile = true
 vim.opt.undodir = undo_dir
 -- }}
+
+function _G.get_winbar()
+  -- Get path relative to current working directory
+  local filepath = vim.fn.expand("%:.")
+  local modified = vim.bo.modified and " [+]" or ""
+  local readonly = vim.bo.readonly and " [RO]" or ""
+
+  -- Truncate from the left if too long
+  local max_len = math.floor(vim.fn.winwidth(0) * 0.6)
+  if #filepath > max_len then
+    filepath = "..." .. filepath:sub(-(max_len - 3))
+  end
+
+  return filepath .. modified .. readonly
+end
+
+vim.opt.winbar = "%{%v:lua.get_winbar()%}"
