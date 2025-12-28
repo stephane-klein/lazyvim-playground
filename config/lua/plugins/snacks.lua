@@ -2,11 +2,13 @@ return {
   "folke/snacks.nvim",
   keys = {
     { "<leader><space>", false }, -- Because I use custom keymap based on <space><space> to split windows
+    { "<leader>.",       false }, -- Because I use <leader>. to open floating neo-tree
   },
+  ---@type snacks.Config
   opts = {
-    explorer = {
-      replace_netrw = true,
-    },
+    -- explorer = {
+    --   replace_netrw = true,
+    -- },
     picker = {
       layouts = {
         vertical = {
