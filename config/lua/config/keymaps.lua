@@ -35,8 +35,19 @@ vim.keymap.set({ "n", "x" }, "m", "d", { desc = "Cut (move)" })
 vim.keymap.set("n", "mm", "dd", { desc = "Cut line (move)" })
 vim.keymap.set({ "n", "x" }, "M", "D", { desc = "Cut to end of line (move)" })
 
+-- "d" for delete without yanking
+vim.keymap.set({ "n", "x" }, "d", '"_d', { desc = "Delete without yanking" })
+vim.keymap.set("n", "dd", '"_dd', { desc = "Delete line without yanking" })
+vim.keymap.set({ "n", "x" }, "D", '"_D', { desc = "Delete to end of line without yanking" })
+
+-- "c" for change without yanking
+vim.keymap.set({ "n", "x" }, "c", '"_c', { desc = "Change without yanking" })
+vim.keymap.set({ "n", "x" }, "C", '"_C', { desc = "Change to end of line without yanking" })
+
 -- Preserve marks functionality with "gm"
 vim.keymap.set("n", "gm", "m", { desc = "Set mark" })
+
+vim.keymap.set('n', '<leader><leader>D', 'gg"_dG', { desc = "Delete all lines without yanking" })
 
 -- }}}
 
