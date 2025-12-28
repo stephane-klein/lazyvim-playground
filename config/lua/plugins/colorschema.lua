@@ -11,7 +11,7 @@ return {
     priority = 1000,
     config = function()
       require("tokyonight").setup({
-        style = "night",  -- maximum contrast
+        style = "night", -- maximum contrast
         contrast = {
           terminal = true,
           sidebars = true,
@@ -25,6 +25,10 @@ return {
           hl.WinBarNC = {
             fg = c.dark5
           }
+          -- Make indent guides much more subtle
+          hl.IblIndent = { fg = "NONE" }
+          hl.IblScope = { fg = c.dark3 }
+          hl.Whitespace = { fg = c.bg_highlight }
         end,
       })
       vim.cmd([[colorscheme tokyonight]])
