@@ -16,21 +16,26 @@ return {
         desc = "Explorer float NeoTree"
       },
       {
-        "<leader>fe",
-        function()
-          require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
-        end,
-        desc = "Explorer NeoTree (Root Dir)",
-      },
-      {
         "<leader>fE",
         function()
           require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
         end,
         desc = "Explorer NeoTree (cwd)",
       },
-      { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
-      { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)",      remap = true },
+      {
+        "<leader>e",
+        function()
+          require("neo-tree.command").execute({ action = "focus" })
+        end,
+        desc = "Focus Neo-tree",
+      },
+      { 
+        "<leader>fec",
+        function()
+          require("neo-tree.command").execute({ action = "close" })
+        end,
+        desc = "Close NeoTree",
+      }
     },
     deactivate = function()
       vim.cmd([[Neotree close]])
@@ -46,7 +51,7 @@ return {
           if package.loaded["neo-tree"] then
             return
           else
-            local stats = vim.uv.fs_stat(vim.fn.argv(0))
+            local stats = vim.uv.fs_stat(vim.fn.argv(0) --[[@as string]])
             if stats and stats.type == "directory" then
               require("neo-tree")
             end
@@ -59,13 +64,34 @@ return {
       open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
       hijack_netrw_behavior = "open_default",
       filesystem = {
-        bind_to_cwd = false,
+        auto_expand_width = true,
+        bind_to_cwd = true,
         follow_current_file = { enabled = true },
         use_libuv_file_watcher = true,
+        window = {
+          mappings = {
+            ["."] = {
+              function(state)
+                local node = state.tree:get_node()
+                local path = node:get_id()
+                -- Get the directory path
+                if node.type ~= "directory" then
+                  path = vim.fn.fnamemodify(path, ":h")
+                end
+                vim.cmd("cd " .. vim.fn.fnameescape(path))
+                print("Changed pwd to: " .. path)  -- Debug message
+              end,
+              desc = "Set root and change global pwd",
+            },
+            ["e"] = {
+              "toggle_auto_expand_width",
+              desc = "Toggle auto expand width",
+            }
+          },
+        },
       },
       window = {
         mappings = {
-          ["l"] = "open",
           ["h"] = "close_node",
           ["<space>"] = "none",
           ["Y"] = {
@@ -76,13 +102,7 @@ return {
             end,
             desc = "Copy Path to Clipboard",
           },
-          ["O"] = {
-            function(state)
-              require("lazy.util").open(state.tree:get_node().path, { system = true })
-            end,
-            desc = "Open with System Application",
-          },
-          ["P"] = { "toggle_preview", config = { use_float = false } },
+          ["P"] = { "toggle_preview", config = { use_float = true } },
         },
       },
       default_component_configs = {
