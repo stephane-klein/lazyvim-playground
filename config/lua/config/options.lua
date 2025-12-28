@@ -44,3 +44,9 @@ function _G.get_winbar()
 end
 
 vim.opt.winbar = "%{%v:lua.get_winbar()%}"
+
+-- Enable line wrapping by default {{{
+vim.opt.wrap = true
+vim.opt.linebreak = true  -- Break lines at word boundaries (optional but recommended)
+vim.opt.showbreak = "↪ "  -- Visual indicator for wrapped lines (optional)
+-- }}}
